@@ -1,4 +1,5 @@
 import Logo from '../../assets/SVG/Logo';
+import LogoBlue from '../../assets/SVG/LogoBlue';
 import Phone from '../../assets/SVG/Phone';
 import Facebook from '../../assets/SVG/Facebook';
 import Google from '../../assets/SVG/Google';
@@ -21,4 +22,5 @@ export default {
   ArrowBlack,
   Star,
   ArrowRightBlack,
+  LogoBlue,
 };

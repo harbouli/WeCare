@@ -1,3 +1,3 @@
-import AuthCompleting from './MoreInfoAcountScreen';
+import MoreInfoAcountScreen from './MoreInfoAcountScreen';
 import WelcomeEndAuth from './WeeCareWelcomeScreen';
-export {AuthCompleting, WelcomeEndAuth};
+export {MoreInfoAcountScreen, WelcomeEndAuth};

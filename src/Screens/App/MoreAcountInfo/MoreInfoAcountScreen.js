@@ -1,14 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TextInput} from 'react-native';
 import React from 'react';
-import {Displayer} from '../../Utils';
-import {Colors, Fonts} from '../../Constants';
+
+import {Displayer} from '../../../Utils';
+import {Colors, Fonts} from '../../../Constants';
 import {
-  TextField,
-  RadioButton,
-  RadioButton,
+  ScreensTheme,
+  RadiosButton,
   NextBtn,
   Separator,
-  ScreensTheme,
 } from '../../../Components';
 
 const Checkbox = [
@@ -29,22 +28,18 @@ const MoreInfoAcountScreen = ({navigation}) => {
       <View style={styles.Auth}>
         <Text style={styles.Text}>C’est rapide et facile.</Text>
         <View style={styles.fullName}>
-          <TextField
-            type="'default'"
-            placeholder="Prénom"
-            width={setWidth(43)}
-          />
-          <TextField
+          <TextInput type="default" placeholder="Prénom" width={setWidth(43)} />
+          <TextInput
             placeholder="Nom de famille"
-            type="'default'"
+            type="default"
             width={setWidth(43)}
           />
         </View>
         <View style={styles.line}>
-          <RadioButton PROP={Checkbox} />
+          <RadiosButton PROP={Checkbox} />
         </View>
         <View style={styles.line}>
-          <TextField placeholder="Age" type="number-pad" width={setWidth(30)} />
+          <TextInput placeholder="Age" type="number-pad" width={setWidth(30)} />
         </View>
         <Separator height={20} />
         <NextBtn onPress={() => navigation.navigate('WeeCareWelcome')}>
