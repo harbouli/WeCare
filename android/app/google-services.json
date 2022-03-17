@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "835127700045",
+    "project_id": "weecare-production",
+    "storage_bucket": "weecare-production.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835127700045:android:0af4c9e7a191334de1ca04",
+        "android_client_info": {
+          "package_name": "com.weecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835127700045-iga2nj29r6aagk8uk58pjj7jbnc3v1m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCadARmUlgzgWqhky6sUZ8SiGGYGG5g2PA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835127700045-iga2nj29r6aagk8uk58pjj7jbnc3v1m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
