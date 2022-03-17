@@ -2,9 +2,9 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 
 import AuthReducer from './Reducers/GeneralReducer';
-import PlacesReducer from './Reducers/Places-reducer';
+import UserReducer from './Reducers/UserReducer';
 
-const rootReducer = combineReducers({Auth: AuthReducer, Places: PlacesReducer});
+const rootReducer = combineReducers({Auth: AuthReducer, User: UserReducer});
 
 const Store = createStore(rootReducer, applyMiddleware(thunk));
 

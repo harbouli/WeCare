@@ -17,31 +17,14 @@ function Navigation() {
   const {isFirstTimeUse, user: isUser} = useSelector(state => state.Auth);
   const dispatch = useDispatch();
 
-  // const [user, setUser] = useState();
   const [isConnected, setIsConnected] = useState();
 
-  // // Handle user state changes
-  // function onAuthStateChanged(user) {
-  //   setUser(user);
-  //   // console.log(user);
-  // }
   const [splash, setSplash] = useState(true);
 
   useEffect(() => {
     dispatch(GeneralAction.appStart());
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
-      //     if (isConnected) {
-      //       if (!isUser) {
-      //         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-      //         if (user) {
-      //           GeneralStorage.setUser(true).then(() => {
-      //             dispatch(GeneralAction.setUser(true));
-      //           });
-      //         }
-      //         return subscriber;
-      //       }
-      //     }
     });
     setTimeout(() => {
       setSplash(false);

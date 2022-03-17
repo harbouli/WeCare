@@ -1,15 +1,24 @@
 const types = {
-  ADD_PLACE: 'ADD_PLACE',
+  ADD_USER: 'ADD_USER',
+  SET_UID: 'SET_UID',
 };
 
-const addPlace = place => {
+const adduser = userInfo => {
   return {
-    type: ADD_PLACE,
+    type: types.ADD_USER,
     payload: {
-      latitude: place.latitude,
-      longitude: place.longitude,
+      firstname: userInfo.firstname,
+      lastname: userInfo.lastname,
+      gender: userInfo.gender,
+      age: userInfo.age,
     },
   };
 };
+const addUID = UID => {
+  return {
+    type: types.SET_UID,
+    payload: UID,
+  };
+};
 
-export default {types, addPlace};
+export default {types, adduser, addUID};

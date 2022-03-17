@@ -15,5 +15,19 @@ const setUser = user => {
 const getUser = () => {
   return AsyncSorage.getItem('user');
 };
+const setUID = UID => {
+  return AsyncSorage.setItem('uid', UID);
+};
 
-export default {setFirstTimeUse, getFirstTimeUse, setUser, getUser};
+const getUID = () => {
+  return AsyncSorage.getItem('uid');
+};
+
+export default {
+  setFirstTimeUse,
+  getFirstTimeUse,
+  setUser,
+  getUser,
+  setUID,
+  getUID,
+};

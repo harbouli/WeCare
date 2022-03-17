@@ -1,14 +1,22 @@
-import PlacesAction from '../Actions/Places-action';
+import UserAction from '../Actions/UserAction';
 
 const initialState = {
-  places: [],
+  UID: '',
+  user: {
+    firstname: '',
+    lastname: '',
+    gender: '',
+    age: '',
+  },
 };
-const PlacesReducer = (state = initialState, action) => {
+const UserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PlacesAction.types.ADD_PLACE:
-      return {...state, places: action.payload};
+    case UserAction.types.ADD_USER:
+      return {...state, user: action.payload};
+    case UserAction.types.SET_UID:
+      return {...state, UID: action.payload};
     default:
       return state;
   }
 };
-export default PlacesReducer;
+export default UserReducer;

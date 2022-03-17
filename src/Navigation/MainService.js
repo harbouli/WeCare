@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen} from '../Screens/App/Service';
+import {HomeScreenService} from '../Screens/App/Service';
 
 const Stack = createNativeStackNavigator();
 export default () => {
@@ -8,7 +8,7 @@ export default () => {
     <Stack.Navigator
       initialRouteName="MoreInfoAcount"
       screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={HomeScreenService} />
     </Stack.Navigator>
   );
 };

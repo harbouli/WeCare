@@ -7,6 +7,7 @@ import {useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
 import GeneralStorage from '../Store/Storage/GeneralStorage';
 import GeneralAction from '../Store/Actions/GeneralAction';
+import UserAction from '../Store/Actions/UserAction';
 //
 //
 //
@@ -19,9 +20,12 @@ export default () => {
   const [user, setUser] = useState();
 
   // Handle user state changes
-  function onAuthStateChanged(user) {
-    setUser(user);
-    // console.log(user);
+  function onAuthStateChanged(usr) {
+    setUser(usr);
+    console.log(usr);
+    GeneralStorage.setUID(usr.uid).then(() => {
+      dispatch(UserAction.addUID(usr.uid));
+    });
   }
 
   // UseEffect Functions
@@ -39,10 +43,10 @@ export default () => {
 
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      {isUser && user ? (
+      {isUser ? (
         <>
-          <Stack.Screen name="Main" component={MainService} />
           <Stack.Screen name="MoreInfo" component={MoreInfoNavigator} />
+          <Stack.Screen name="Main" component={MainService} />
         </>
       ) : (
         <Stack.Screen name="Auth" component={AuthNavigator} />

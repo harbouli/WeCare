@@ -1,12 +1,16 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import ScreensTheme from '../../Components/ScreensTheme';
 import {Displayer} from '../../Utils';
 import {Colors, Fonts} from '../../Constants';
-import TextField from '../../Components/TextField';
-import RadioButton from '../../Components/RadioButton';
-import NextBtn from '../../Components/NextBtn';
-import Separator from '../../Components/Separator';
+import {
+  TextField,
+  RadioButton,
+  RadioButton,
+  NextBtn,
+  Separator,
+  ScreensTheme,
+} from '../../../Components';
+
 const Checkbox = [
   {
     key: 'Femme',
