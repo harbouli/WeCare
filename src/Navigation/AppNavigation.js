@@ -13,7 +13,6 @@ import UserAction from '../Store/Actions/UserAction';
 const Stack = createNativeStackNavigator();
 export default () => {
   const {user} = useSelector(state => state.Auth);
-  console.log(user);
   useEffect(() => {});
 
   return (
