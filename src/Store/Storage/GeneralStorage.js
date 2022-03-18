@@ -9,7 +9,7 @@ const getFirstTimeUse = () => {
 };
 
 const setUser = user => {
-  return AsyncSorage.setItem('user', 'false');
+  return AsyncSorage.setItem('user', JSON.stringify(user));
 };
 
 const getUser = () => {

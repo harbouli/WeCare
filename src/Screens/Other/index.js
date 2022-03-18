@@ -1,3 +1,4 @@
-import Splash from './SplashScreen';
+import SplashScreen from './SplashScreen';
 import Welcome from './WelcomeScreen';
-export {Splash, Welcome};
+import NotConnectedScreen from './NotConnectedScreen';
+export {SplashScreen, Welcome, NotConnectedScreen};

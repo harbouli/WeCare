@@ -25,9 +25,9 @@ const HomeScreen = ({navigation}) => {
   const Anonymously = () => {
     auth()
       .signInAnonymously()
-      .then(() => {
+      .then(async () => {
         console.log('User signed in anonymously');
-        GeneralStorage.setUser(true).then(() => {
+        await GeneralStorage.setUser(true).then(() => {
           dispatch(GeneralAction.setUser(true));
         });
       })

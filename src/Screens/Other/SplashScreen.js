@@ -1,11 +1,11 @@
 import {StyleSheet, Text, View, StatusBar} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Colors, Fonts, Lottie, SVG} from '../../Constants';
 import LottieView from 'lottie-react-native';
 import {Displayer} from '../../Utils';
 
 const {setWidth} = Displayer;
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.Container}>
       <StatusBar backgroundColor={Colors.Blue} barStyle="light-content" />

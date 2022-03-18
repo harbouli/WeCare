@@ -36,10 +36,15 @@ const appStart = () => {
       });
     });
     StorageService.getUser().then(user => {
-      if (user) {
+      if (user === 'true') {
         dispatch({
           type: types.SET_USER,
-          payload: user,
+          payload: true,
+        });
+      } else {
+        dispatch({
+          type: types.SET_USER,
+          payload: false,
         });
       }
       dispatch({
