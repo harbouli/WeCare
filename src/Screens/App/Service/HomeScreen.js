@@ -1,12 +1,4 @@
-import {
-  StatusBar,
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import auth from '@react-native-firebase/auth';
 import {useDispatch} from 'react-redux';
@@ -16,6 +8,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {CircleBtn} from '../../../Components/';
 import GeneralStorage from '../../../Store/Storage/GeneralStorage';
 import GeneralAction from '../../../Store/Actions/GeneralAction';
+import UserAction from '../../../Store/Actions/UserAction';
 import {Colors, Fonts, SVG} from '../../../Constants';
 import {Displayer} from '../../../Utils';
 
@@ -27,10 +20,12 @@ const HomeScreenService = ({navigation}) => {
     dispatch(GeneralAction.setIsAppLoading(true));
     await GeneralStorage.setUser(false.toString()).then(() => {
       dispatch(GeneralAction.setUser(false));
+      dispatch(UserAction.addUID(''));
       auth()
         .signOut()
         .then(() => console.log('SingOut'));
     });
+
     dispatch(GeneralAction.setIsAppLoading(false));
   };
 
@@ -39,12 +34,12 @@ const HomeScreenService = ({navigation}) => {
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       {/* Header  */}
       <View style={styles.header}>
-        <CircleBtn>
+        <CircleBtn onPress={SinOutBtn}>
           <SVG.Profile />
         </CircleBtn>
-        <CircleBtn onPress={SinOutBtn}>
-          <SVG.Logout />
-        </CircleBtn>
+        <View style={styles.Logo}>
+          <SVG.LogoBlue />
+        </View>
       </View>
     </GestureHandlerRootView>
   );
@@ -57,5 +52,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  header: {flexDirection: 'row', padding: 20, justifyContent: 'space-between'},
+  header: {flexDirection: 'row', padding: 20},
+  Logo: {
+    marginLeft: 20,
+  },
 });

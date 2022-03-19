@@ -6,6 +6,7 @@ import GetResults from '../../assets/Images/Get_Results.png';
 import Visits from '../../assets/Images/Visits.png';
 import Morocco from '../../assets/Images/Morocco.png';
 import Where_I_Am from '../../assets/Images/Where_I_Am.png';
+import Illustration from '../../assets/Images/Illustration.png';
 export default {
   HomeImage,
   BottomShadow,
@@ -15,4 +16,5 @@ export default {
   Visits,
   Morocco,
   Where_I_Am,
+  Illustration,
 };
