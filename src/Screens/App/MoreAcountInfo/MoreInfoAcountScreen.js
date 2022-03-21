@@ -9,6 +9,7 @@ import {
   NextBtn,
   Separator,
 } from '../../../Components';
+import {useSelector} from 'react-redux';
 
 const Checkbox = [
   {
@@ -23,6 +24,9 @@ const Checkbox = [
 
 const {setWidth, setHeight} = Displayer;
 const MoreInfoAcountScreen = ({navigation}) => {
+  const {UID: uidS} = useSelector(state => state.User);
+  console.log(uidS);
+
   return (
     <ScreensTheme Title={'Complete Account'} goBack={true}>
       <View style={styles.Auth}>

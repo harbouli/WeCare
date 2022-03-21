@@ -1,7 +1,7 @@
 import {StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import auth from '@react-native-firebase/auth';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
@@ -20,7 +20,8 @@ const HomeScreenService = ({navigation}) => {
     dispatch(GeneralAction.setIsAppLoading(true));
     await GeneralStorage.setUser(false.toString()).then(() => {
       dispatch(GeneralAction.setUser(false));
-      dispatch(UserAction.addUID(''));
+      GeneralStorage.setUID('').then(() => dispatch(UserAction.addUID('')));
+
       auth()
         .signOut()
         .then(() => console.log('SingOut'));
@@ -28,7 +29,7 @@ const HomeScreenService = ({navigation}) => {
 
     dispatch(GeneralAction.setIsAppLoading(false));
   };
-
+  const {UID: uidS} = useSelector(state => state.User);
   return (
     <GestureHandlerRootView style={styles.screen}>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />

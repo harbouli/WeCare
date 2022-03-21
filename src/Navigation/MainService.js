@@ -13,19 +13,18 @@ const Stack = createNativeStackNavigator();
 export default () => {
   // Set Satat
   const [isAnonymous, setisAnonymous] = useState();
-  const [UID, setUID] = useState();
 
   // Redux Utils
   const dispatch = useDispatch();
-  const {UID: uidS} = useSelector(state => state.User);
 
   const Checker = async () => {
     const Sub = await auth().currentUser;
+
+    GeneralStorage.getUID().then(uid => {
+      dispatch(UserAction.addUID(uid));
+    });
     if (Sub) {
-      setUID(Sub.uid);
       setisAnonymous(Sub.isAnonymous);
-      dispatch(UserAction.addUID(UID));
-      console.log(uidS);
     }
   };
 

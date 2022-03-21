@@ -14,11 +14,12 @@ import RNOtpVerify from 'react-native-otp-verify';
 import auth from '@react-native-firebase/auth';
 import GeneralStorage from '../../Store/Storage/GeneralStorage';
 import GeneralAction from '../../Store/Actions/GeneralAction';
+import UserAction from '../../Store/Actions/UserAction';
 import {useDispatch} from 'react-redux';
 
 const {setWidth, setHeight} = Displayer;
 const OtpScreen = ({confirm}) => {
-  const [code, setCode] = useState();
+  const [code, setCode] = useState('');
   // OTP AUTO DETECT
   useEffect(() => {
     RNOtpVerify.getHash().then(console.log).catch(console.log);
@@ -55,6 +56,9 @@ const OtpScreen = ({confirm}) => {
           GeneralStorage.setUser(true).then(() => {
             dispatch(GeneralAction.setUser(true));
           });
+          GeneralStorage.setUID(user.user.uid).then(() => {
+            dispatch(UserAction.addUID(user.user.uid));
+          });
         });
     } catch (error) {
       if (error.code == 'auth/invalid-verification-code') {
@@ -64,6 +68,11 @@ const OtpScreen = ({confirm}) => {
       }
     }
   }
+  useEffect(() => {
+    if (code.length === 6) {
+      confirmCode(code);
+    }
+  }, [code]);
   return (
     <>
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
@@ -93,11 +102,11 @@ const OtpScreen = ({confirm}) => {
                 fontFamily: Fonts.EC_Bold,
                 fontSize: 18,
               }}
-              onCodeChanged={value => value.replace(/[^0-9]/g, '')}
+              onCodeChanged={value => setCode(value.replace(/[^0-9]/g, ''))}
               autoFocusOnLoad
               onCodeFilled={codeOTP => {
                 console.log(`Code is ${codeOTP}, you are good to go!`);
-                confirmCode(codeOTP);
+                setCode(codeOTP);
               }}
               codeInputHighlightStyle={{
                 color: Colors.Blue,

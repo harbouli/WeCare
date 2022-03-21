@@ -16,20 +16,26 @@ import {Displayer} from '../../Utils';
 import BoxLogin from '../../Components/BoxsLogin';
 import GeneralStorage from '../../Store/Storage/GeneralStorage';
 import GeneralAction from '../../Store/Actions/GeneralAction';
+import UserAction from '../../Store/Actions/UserAction';
+
 const {setWidth} = Displayer;
 
 const HomeScreen = ({navigation}) => {
   const dispatch = useDispatch();
 
   // Sin IN Anonymously
-  const Anonymously = () => {
-    auth()
+  const Anonymously = async () => {
+    dispatch(GeneralAction.setIsAppLoading(true));
+    await auth()
       .signInAnonymously()
-      .then(async () => {
+      .then(async moreInfo => {
         console.log('User signed in anonymously');
         await GeneralStorage.setUser(true).then(() => {
           dispatch(GeneralAction.setUser(true));
         });
+        await GeneralStorage.setUID(moreInfo.user.uid).then(() =>
+          dispatch(UserAction.addUID(moreInfo.user.uid)),
+        );
       })
       .catch(error => {
         if (error.code === 'auth/operation-not-allowed') {
@@ -37,6 +43,7 @@ const HomeScreen = ({navigation}) => {
         }
         console.error(error);
       });
+    dispatch(GeneralAction.setIsAppLoading(false));
   };
 
   return (

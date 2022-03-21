@@ -4,9 +4,6 @@ import AuthNavigator from './AuthNavigation';
 import MainService from './MainService';
 import {useSelector} from 'react-redux';
 import auth from '@react-native-firebase/auth';
-import GeneralStorage from '../Store/Storage/GeneralStorage';
-import GeneralAction from '../Store/Actions/GeneralAction';
-import UserAction from '../Store/Actions/UserAction';
 //
 //
 //

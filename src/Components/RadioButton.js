@@ -9,16 +9,17 @@ const RadioButton = ({PROP}) => {
     <View style={styles.Holder}>
       {PROP.map(res => {
         return (
-          <View key={res.key} style={styles.container}>
+          <TouchableOpacity
+            key={res.key}
+            style={styles.container}
+            onPress={() => {
+              setValue(res.key);
+            }}>
             <Text style={styles.radioText}>{res.text}</Text>
-            <TouchableOpacity
-              style={styles.radioCircle}
-              onPress={() => {
-                setValue(res.key);
-              }}>
+            <View style={styles.radioCircle}>
               {value === res.key && <View style={styles.selectedRb} />}
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         );
       })}
     </View>

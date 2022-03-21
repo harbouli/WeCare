@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   },
   Header: {
     width: '100%',
-    paddingVertical: 15,
-    height: setHeight(15),
+    paddingVertical: 5,
+    height: setHeight(20),
     justifyContent: 'space-between',
     width: setWidth(90),
     alignSelf: 'center',
