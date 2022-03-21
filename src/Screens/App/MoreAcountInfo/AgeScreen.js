@@ -2,42 +2,29 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 
 import {Displayer} from '../../../Utils';
 import {Colors, Fonts} from '../../../Constants';
-import {
-  ScreensTheme,
-  RadiosButton,
-  NextBtn,
-  Separator,
-} from '../../../Components';
-import UserAction from '../../../Store/Actions/UserAction';
+import {ScreensTheme, NextBtn, Separator} from '../../../Components';
 import {useDispatch, useSelector} from 'react-redux';
-
-const Checkbox = [
-  {
-    key: 'Femme',
-    text: 'Femme',
-  },
-  {
-    key: 'Homme',
-    text: 'Homme',
-  },
-];
+import UserAction from '../../../Store/Actions/UserAction';
 
 const {setWidth, setHeight} = Displayer;
-const GenderScreen = ({navigation}) => {
+
+const AgeScreen = ({navigation}) => {
   const {user} = useSelector(state => state.User);
-  const RadioRef = useRef(user.gende);
+
   const dispatch = useDispatch();
+  const [age, setAge] = useState(user.age);
 
   return (
-    <ScreensTheme Title={'Gender'} goBack={false}>
+    <ScreensTheme Title={'Age'} goBack={false}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
@@ -46,16 +33,23 @@ const GenderScreen = ({navigation}) => {
             <Text style={styles.Text}>C’est rapide et facile.</Text>
             <View style={styles.HolderContainer}>
               <View style={styles.fullName}>
-                <RadiosButton ref={RadioRef} PROP={Checkbox} />
+                <TextInput
+                  value={age}
+                  onChangeText={inputValue =>
+                    setAge(inputValue.replace(/[^0-9]/g, ''))
+                  }
+                  keyboardType="number-pad"
+                  placeholder="Age"
+                  width={setWidth(20)}
+                  style={styles.TextField}
+                />
               </View>
 
               <Separator height={20} />
               <NextBtn
                 onPress={() => {
-                  navigation.navigate('Age');
-                  dispatch(
-                    UserAction.adduser({...user, gender: RadioRef.current}),
-                  );
+                  navigation.navigate('WeeCareStart');
+                  dispatch(UserAction.adduser({...user, age}));
                 }}>
                 Next
               </NextBtn>
@@ -67,7 +61,7 @@ const GenderScreen = ({navigation}) => {
   );
 };
 
-export default GenderScreen;
+export default AgeScreen;
 
 const styles = StyleSheet.create({
   Auth: {
@@ -88,7 +82,7 @@ const styles = StyleSheet.create({
   },
   fullName: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     // marginTop: 120,
   },
   line: {

@@ -3,8 +3,9 @@ import React, {useState} from 'react';
 import {Displayer} from '../Utils';
 import {Colors, Fonts} from '../Constants';
 const {setWidth, setHeight} = Displayer;
-const RadioButton = ({PROP}) => {
+const RadioButton = React.forwardRef(({PROP}, RadioRef) => {
   const [value, setValue] = useState('');
+
   return (
     <View style={styles.Holder}>
       {PROP.map(res => {
@@ -13,7 +14,9 @@ const RadioButton = ({PROP}) => {
             key={res.key}
             style={styles.container}
             onPress={() => {
-              setValue(res.key);
+              RadioRef.current = res.key;
+              // console.log(RadioRef.current);
+              setValue(RadioRef.current);
             }}>
             <Text style={styles.radioText}>{res.text}</Text>
             <View style={styles.radioCircle}>
@@ -24,7 +27,7 @@ const RadioButton = ({PROP}) => {
       })}
     </View>
   );
-};
+});
 
 export default RadioButton;
 

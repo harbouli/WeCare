@@ -20,7 +20,8 @@ const MoreInfoAcountScreen = ({navigation}) => {
   const {user} = useSelector(state => state.User);
 
   const dispatch = useDispatch();
-  const [firstname, setFirstname] = useState('');
+  const [firstname, setFirstname] = useState(user.firstname);
+  const [lastname, setLastname] = useState(user.lastname);
 
   return (
     <ScreensTheme Title={'FullName'} goBack={false}>
@@ -35,14 +36,16 @@ const MoreInfoAcountScreen = ({navigation}) => {
                 <TextInput
                   value={firstname}
                   onChangeText={value => setFirstname(value)}
-                  type="default"
+                  keyboardType="default"
                   placeholder="Prénom"
                   width={setWidth(43)}
                   style={styles.TextField}
                 />
                 <TextInput
                   placeholder="Nom de famille"
-                  type="default"
+                  value={lastname}
+                  onChangeText={value => setLastname(value)}
+                  keyboardType="default"
                   width={setWidth(43)}
                   style={styles.TextField}
                 />
@@ -52,7 +55,7 @@ const MoreInfoAcountScreen = ({navigation}) => {
               <NextBtn
                 onPress={() => {
                   navigation.navigate('Gender');
-                  dispatch(UserAction.adduser({...user, firstname}));
+                  dispatch(UserAction.adduser({...user, firstname, lastname}));
                 }}>
                 Next
               </NextBtn>

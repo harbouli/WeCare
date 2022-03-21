@@ -8,6 +8,8 @@ import {SplashScreen} from '../Screens/Other';
 import {
   MoreInfoAcountScreen,
   GenderScreen,
+  AgeScreen,
+  WeeCareWelcomeScreen,
 } from '../Screens/App/MoreAcountInfo';
 import UserAction from '../Store/Actions/UserAction';
 import GeneralStorage from '../Store/Storage/GeneralStorage';
@@ -45,6 +47,8 @@ export default () => {
             component={MoreInfoAcountScreen}
           />
           <Stack.Screen name="Gender" component={GenderScreen} />
+          <Stack.Screen name="Age" component={AgeScreen} />
+          <Stack.Screen name="WeeCareStart" component={WeeCareWelcomeScreen} />
         </>
       ) : (
         <Stack.Screen name="splash" component={SplashScreen} />

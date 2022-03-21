@@ -10,6 +10,7 @@ import Clock from '../../assets/SVG/Clock';
 import ArrowBlack from '../../assets/SVG/ArrowBlack';
 import Star from '../../assets/SVG/Star';
 import ArrowRightBlack from '../../assets/SVG/ArrowRightBlack';
+import Shape from '../../assets/SVG/Shape';
 export default {
   Logo,
   Phone,
@@ -23,4 +24,5 @@ export default {
   Star,
   ArrowRightBlack,
   LogoBlue,
+  Shape,
 };

@@ -31,15 +31,15 @@ export default Btn;
 const styles = StyleSheet.create({
   Box: {
     backgroundColor: Colors.Blue,
-    width: setWidth(50),
-    height: 50,
+    width: setWidth(80),
+    height: 70,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
   },
   Title: {
     fontFamily: Fonts.EC_Bold,
-    fontSize: 18,
+    fontSize: 24,
     color: '#fff',
   },
 });
