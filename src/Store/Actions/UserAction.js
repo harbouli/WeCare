@@ -11,6 +11,7 @@ const adduser = userInfo => {
       lastname: userInfo.lastname,
       gender: userInfo.gender,
       age: userInfo.age,
+      complete: userInfo.complete,
     },
   };
 };

@@ -7,6 +7,7 @@ const initialState = {
     lastname: '',
     gender: '',
     age: '',
+    complete: false,
   },
 };
 const UserReducer = (state = initialState, action) => {

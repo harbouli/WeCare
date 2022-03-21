@@ -16,6 +16,9 @@ import GeneralStorage from '../Store/Storage/GeneralStorage';
 
 const Stack = createNativeStackNavigator();
 export default () => {
+  const {user} = useSelector(state => state.User);
+  const {firstname, lastname, age, gender, complete} = user;
+
   // Set Satat
   const [isAnonymous, setisAnonymous] = useState();
 
@@ -36,9 +39,11 @@ export default () => {
   useEffect(() => {
     Checker();
   }, []);
+  const Condition =
+    isAnonymous || (firstname && lastname && age && gender && complete);
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      {isAnonymous ? (
+      {Condition ? (
         <Stack.Screen name="Home" component={HomeScreenService} />
       ) : isAnonymous == false ? (
         <>

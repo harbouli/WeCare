@@ -3,11 +3,13 @@ import React from 'react';
 import {Displayer} from '../../../Utils';
 import {Colors, Fonts, Images, SVG} from '../../../Constants';
 import {Btn} from '../../../Components';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import UserAction from '../../../Store/Actions/UserAction';
 
 const {setWidth, setHeight} = Displayer;
 
 const WeeCareWelcomeScreen = () => {
+  const dispatch = useDispatch();
   const {user} = useSelector(state => state.User);
   console.log(user);
   return (
@@ -26,7 +28,12 @@ const WeeCareWelcomeScreen = () => {
           You're all set up and ready to get lab test at home Direct to your
           seat!
         </Text>
-        <Btn onPress={() => {}}>Done</Btn>
+        <Btn
+          onPress={() => {
+            dispatch(UserAction.adduser({...user, complete: true}));
+          }}>
+          Done
+        </Btn>
       </View>
     </View>
   );
