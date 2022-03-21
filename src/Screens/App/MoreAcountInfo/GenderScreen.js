@@ -2,28 +2,41 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 
 import {Displayer} from '../../../Utils';
 import {Colors, Fonts} from '../../../Constants';
-import {ScreensTheme, NextBtn, Separator} from '../../../Components';
-import {useDispatch, useSelector} from 'react-redux';
+import {
+  ScreensTheme,
+  RadiosButton,
+  NextBtn,
+  Separator,
+} from '../../../Components';
 import UserAction from '../../../Store/Actions/UserAction';
+import {useDispatch, useSelector} from 'react-redux';
+
+const Checkbox = [
+  {
+    key: 'Femme',
+    text: 'Femme',
+  },
+  {
+    key: 'Homme',
+    text: 'Homme',
+  },
+];
 
 const {setWidth, setHeight} = Displayer;
-const MoreInfoAcountScreen = ({navigation}) => {
-  const {user} = useSelector(state => state.User);
-
+const GenderScreen = ({navigation}) => {
+  const {UID: uidS} = useSelector(state => state.User);
+  console.log(uidS);
   const dispatch = useDispatch();
-  const [firstname, setFirstname] = useState('');
-
   return (
-    <ScreensTheme Title={'FullName'} goBack={false}>
+    <ScreensTheme Title={'Gender'} goBack={false}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
@@ -32,27 +45,14 @@ const MoreInfoAcountScreen = ({navigation}) => {
             <Text style={styles.Text}>C’est rapide et facile.</Text>
             <View style={styles.HolderContainer}>
               <View style={styles.fullName}>
-                <TextInput
-                  value={firstname}
-                  onChangeText={value => setFirstname(value)}
-                  type="default"
-                  placeholder="Prénom"
-                  width={setWidth(43)}
-                  style={styles.TextField}
-                />
-                <TextInput
-                  placeholder="Nom de famille"
-                  type="default"
-                  width={setWidth(43)}
-                  style={styles.TextField}
-                />
+                <RadiosButton PROP={Checkbox} />
               </View>
 
               <Separator height={20} />
               <NextBtn
                 onPress={() => {
                   navigation.navigate('Gender');
-                  dispatch(UserAction.adduser({...user, firstname}));
+                  dispatch(UserAction.adduser());
                 }}>
                 Next
               </NextBtn>
@@ -64,7 +64,7 @@ const MoreInfoAcountScreen = ({navigation}) => {
   );
 };
 
-export default MoreInfoAcountScreen;
+export default GenderScreen;
 
 const styles = StyleSheet.create({
   Auth: {

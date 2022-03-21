@@ -10,9 +10,13 @@ const ScreensThem = ({children, goBack, Title}) => {
     <View style={styles.Screen}>
       <StatusBar backgroundColor={Colors.Blue} barStyle="light-content" />
       <SafeAreaView>
-        <View style={styles.Header}>
+        <View
+          style={[
+            styles.Header,
+            {justifyContent: !goBack ? 'center' : 'space-between'},
+          ]}>
           {goBack && <SVG.ArrowBlack />}
-          <Text style={styles.Title}>{Title}</Text>
+          <Text style={[styles.Title]}>{Title}</Text>
         </View>
         <View style={styles.Body}>{children}</View>
       </SafeAreaView>
@@ -29,9 +33,9 @@ const styles = StyleSheet.create({
   },
   Header: {
     width: '100%',
-    paddingVertical: 5,
-    height: setHeight(20),
-    justifyContent: 'space-between',
+    paddingVertical: 10,
+    height: setHeight(17.5),
+    // justifyContent: 'space-between',
     width: setWidth(90),
     alignSelf: 'center',
     // backgroundColor: '#efefef',
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
   Body: {
     backgroundColor: '#fff',
     width: '100%',
-    height: setHeight(80),
+    height: setHeight(82.5),
     borderTopLeftRadius: 52,
     borderTopRightRadius: 52,
   },

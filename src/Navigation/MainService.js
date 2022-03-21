@@ -5,7 +5,10 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {HomeScreenService} from '../Screens/App/Service';
 import {SplashScreen} from '../Screens/Other';
-import {MoreInfoAcountScreen} from '../Screens/App/MoreAcountInfo';
+import {
+  MoreInfoAcountScreen,
+  GenderScreen,
+} from '../Screens/App/MoreAcountInfo';
 import UserAction from '../Store/Actions/UserAction';
 import GeneralStorage from '../Store/Storage/GeneralStorage';
 
@@ -36,7 +39,13 @@ export default () => {
       {isAnonymous ? (
         <Stack.Screen name="Home" component={HomeScreenService} />
       ) : isAnonymous == false ? (
-        <Stack.Screen name="AcountComplting" component={MoreInfoAcountScreen} />
+        <>
+          <Stack.Screen
+            name="AcountComplting"
+            component={MoreInfoAcountScreen}
+          />
+          <Stack.Screen name="Gender" component={GenderScreen} />
+        </>
       ) : (
         <Stack.Screen name="splash" component={SplashScreen} />
       )}
