@@ -1,16 +1,18 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
+import firestore from '@react-native-firebase/firestore';
+import {useDispatch, useSelector} from 'react-redux';
+
 import {Displayer} from '../../../Utils';
 import {Colors, Fonts, Images, SVG} from '../../../Constants';
 import {Btn} from '../../../Components';
-import {useDispatch, useSelector} from 'react-redux';
 import UserAction from '../../../Store/Actions/UserAction';
 
 const {setWidth, setHeight} = Displayer;
 
 const WeeCareWelcomeScreen = () => {
   const dispatch = useDispatch();
-  const {user} = useSelector(state => state.User);
+  const {user, UID} = useSelector(state => state.User);
   console.log(user);
   return (
     <View style={styles.Screen}>
@@ -30,7 +32,20 @@ const WeeCareWelcomeScreen = () => {
         </Text>
         <Btn
           onPress={() => {
-            dispatch(UserAction.adduser({...user, complete: true}));
+            firestore()
+              .collection('users')
+              .doc(UID)
+              .set({
+                uid: UID,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                age: user.age,
+                gender: user.gender,
+                confirm: true,
+              })
+              .then(() =>
+                dispatch(UserAction.adduser({...user, complete: true})),
+              );
           }}>
           Done
         </Btn>
