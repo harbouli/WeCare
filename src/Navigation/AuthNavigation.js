@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {PhoneRegisterScreen, HomeScreen} from '../Screens/Auth';
-import {useSelector} from 'react-redux';
-import auth from '@react-native-firebase/auth';
 
 const Stack = createNativeStackNavigator();
 

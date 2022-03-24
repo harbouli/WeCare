@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
 import LottieView from 'lottie-react-native';
 import {Colors, Fonts, Lottie} from '../../Constants';
@@ -9,6 +9,8 @@ const {setWidth, setHeight} = Displayer;
 const NotConnectedScreen = () => {
   return (
     <View style={styles.Container}>
+      <StatusBar backgroundColor={Colors.Blue} barStyle="light-content" />
+
       <LottieView
         source={Lottie.NoInternet}
         style={{

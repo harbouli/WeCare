@@ -1,4 +1,11 @@
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {
+  StatusBar,
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TextInput,
+} from 'react-native';
 import React from 'react';
 import auth from '@react-native-firebase/auth';
 import {useDispatch, useSelector} from 'react-redux';
@@ -9,7 +16,7 @@ import {CircleBtn} from '../../../Components/';
 import GeneralStorage from '../../../Store/Storage/GeneralStorage';
 import GeneralAction from '../../../Store/Actions/GeneralAction';
 import UserAction from '../../../Store/Actions/UserAction';
-import {Colors, Fonts, SVG} from '../../../Constants';
+import {Colors, Fonts, Images, SVG} from '../../../Constants';
 import {Displayer} from '../../../Utils';
 
 const {setWidth, setHeight} = Displayer;
@@ -42,6 +49,17 @@ const HomeScreenService = ({navigation}) => {
           <SVG.LogoBlue />
         </View>
       </View>
+      {/* Illustratur */}
+      <Image
+        source={Images.Illustration}
+        style={styles.Illustration}
+        resizeMode="contain"
+      />
+      {/* Your Location Google AutoComplete  */}
+      <View style={styles.Body}>
+        <Text style={styles.LocationText}>Your Location</Text>
+        <TextInput style={styles.AutoComplete} />
+      </View>
     </GestureHandlerRootView>
   );
 };
@@ -56,5 +74,20 @@ const styles = StyleSheet.create({
   header: {flexDirection: 'row', padding: 20},
   Logo: {
     marginLeft: 20,
+  },
+  Illustration: {
+    alignSelf: 'center',
+    width: setWidth(90),
+    height: setHeight(30),
+  },
+  LocationText: {
+    fontSize: 24,
+    fontFamily: Fonts.EC_Bold,
+    color: Colors.Dark_Gray,
+  },
+  Body: {
+    width: setWidth(90),
+    alignSelf: 'center',
+    paddingTop: 10,
   },
 });

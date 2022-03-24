@@ -23,20 +23,23 @@ function Navigation() {
     });
 
     //GetUser
-
-    firestore()
-      .collection('users')
-      .doc(auth().currentUser.uid)
-      .get()
-      .then(userData => {
-        setUser(userData._data);
-        // console.log(userData);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-
-    dispatch(GeneralAction.appStart());
+    const isAuth = auth().currentUser;
+    if (isAuth && !isAuth.isAnonymous) {
+      firestore()
+        .collection('users')
+        .doc(isAuth.uid)
+        .get()
+        .then(userData => {
+          setUser(userData._data);
+          // console.log(userData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+    setTimeout(() => {
+      dispatch(GeneralAction.appStart());
+    }, 3000);
   }, []);
   useEffect(() => {
     dispatch(
