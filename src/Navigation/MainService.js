@@ -38,6 +38,7 @@ export default () => {
 
   useEffect(() => {
     Checker();
+    return;
   }, []);
   const Condition =
     isAnonymous || (firstname && lastname && age && gender && complete);

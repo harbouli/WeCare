@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   Box: {
     backgroundColor: Colors.Blue,
     width: setWidth(80),
-
+    borderRadius: 5,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',

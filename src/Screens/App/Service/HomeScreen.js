@@ -21,13 +21,15 @@ import {Displayer} from '../../../Utils';
 
 const {setWidth, setHeight} = Displayer;
 
-const HomeScreenService = ({navigation}) => {
+const HomeScreenService = () => {
   const dispatch = useDispatch();
   const SinOutBtn = async () => {
     dispatch(GeneralAction.setIsAppLoading(true));
     await GeneralStorage.setUser(false.toString()).then(() => {
       dispatch(GeneralAction.setUser(false));
-      GeneralStorage.setUID('').then(() => dispatch(UserAction.addUID('')));
+      GeneralStorage.setUID('')
+        .then(() => dispatch(UserAction.addUID('')))
+        .then(() => dispatch(UserAction.adduser('')));
 
       auth()
         .signOut()
@@ -87,6 +89,7 @@ const styles = StyleSheet.create({
   },
   Body: {
     width: setWidth(90),
+    height: setHeight(90),
     alignSelf: 'center',
     paddingTop: 10,
   },

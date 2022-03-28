@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 10,
   },
   Title: {
     fontFamily: Fonts.EC_Bold,

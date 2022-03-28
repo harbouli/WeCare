@@ -48,17 +48,17 @@ const OtpScreen = ({confirm}) => {
         OTP,
       );
       console.log(credential);
-      let userData = await auth()
+      await auth()
         .signInWithCredential(credential)
         .then(user => {
-          setUser(userData);
-          console.log(user);
-          GeneralStorage.setUser(true).then(() => {
-            dispatch(GeneralAction.setUser(true));
-          });
-          GeneralStorage.setUID(user.user.uid).then(() => {
-            dispatch(UserAction.addUID(user.user.uid));
-          });
+          if (user) {
+            GeneralStorage.setUser(true).then(() => {
+              dispatch(GeneralAction.setUser(true));
+            });
+            GeneralStorage.setUID(user.user.uid).then(() => {
+              dispatch(UserAction.addUID(user.user.uid));
+            });
+          }
         });
     } catch (error) {
       if (error.code == 'auth/invalid-verification-code') {
@@ -103,7 +103,6 @@ const OtpScreen = ({confirm}) => {
                 fontSize: 18,
               }}
               onCodeChanged={value => setCode(value.replace(/[^0-9]/g, ''))}
-              autoFocusOnLoad
               onCodeFilled={codeOTP => {
                 console.log(`Code is ${codeOTP}, you are good to go!`);
                 setCode(codeOTP);

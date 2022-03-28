@@ -7,13 +7,16 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Displayer} from '../../../Utils';
 import {Colors, Fonts} from '../../../Constants';
 import {ScreensTheme, NextBtn, Separator} from '../../../Components';
 import {useDispatch, useSelector} from 'react-redux';
 import UserAction from '../../../Store/Actions/UserAction';
+import GeneralAction from '../../../Store/Actions/GeneralAction';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 const {setWidth, setHeight} = Displayer;
 const MoreInfoAcountScreen = ({navigation}) => {
@@ -22,6 +25,41 @@ const MoreInfoAcountScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const [firstname, setFirstname] = useState(user.firstname);
   const [lastname, setLastname] = useState(user.lastname);
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    dispatch(GeneralAction.setIsAppLoading(true));
+
+    const isAuth = auth().currentUser;
+    if (isAuth && !isAuth.isAnonymous) {
+      firestore()
+        .collection('users')
+        .doc(isAuth.uid)
+        .get()
+        .then(userData => {
+          setUserInfo(userData._data);
+          // console.log(userData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      dispatch(GeneralAction.setIsAppLoading(false));
+    }
+  }, []);
+  useEffect(() => {
+    dispatch(GeneralAction.setIsAppLoading(false));
+
+    dispatch(
+      UserAction.adduser({
+        firstname: userInfo.firstname,
+        lastname: userInfo.lastname,
+        gender: userInfo.gender,
+        age: userInfo.age,
+        complete: userInfo.confirm,
+      }),
+    );
+  }, [userInfo]);
 
   return (
     <ScreensTheme Title={'FullName'} goBack={false}>
