@@ -13,6 +13,7 @@ import {
 } from '../Screens/App/MoreAcountInfo';
 import UserAction from '../Store/Actions/UserAction';
 import GeneralStorage from '../Store/Storage/GeneralStorage';
+import ProfileScreen from '../Screens/App/Service/Profile';
 
 const Stack = createNativeStackNavigator();
 export default () => {
@@ -45,7 +46,10 @@ export default () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {Condition ? (
-        <Stack.Screen name="Home" component={HomeScreenService} />
+        <>
+          <Stack.Screen name="Home" component={HomeScreenService} />
+          <Stack.Screen name="Profile" component={ProfileScreen} />
+        </>
       ) : isAnonymous == false ? (
         <>
           <Stack.Screen

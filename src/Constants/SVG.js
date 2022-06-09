@@ -11,10 +11,14 @@ import ArrowBlack from '../../assets/SVG/ArrowBlack';
 import Star from '../../assets/SVG/Star';
 import ArrowRightBlack from '../../assets/SVG/ArrowRightBlack';
 import Shape from '../../assets/SVG/Shape';
+import X from '../../assets/SVG/X';
+import Email from '../../assets/SVG/Email';
+import Phonee from '../../assets/SVG/Phonee';
 export default {
   Logo,
   Phone,
   Facebook,
+  Phonee,
   Google,
   ArrowRight,
   Profile,
@@ -25,4 +29,6 @@ export default {
   ArrowRightBlack,
   LogoBlue,
   Shape,
+  X,
+  Email,
 };

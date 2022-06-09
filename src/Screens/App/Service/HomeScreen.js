@@ -22,7 +22,7 @@ import {Displayer} from '../../../Utils';
 
 const {setWidth, setHeight} = Displayer;
 
-const HomeScreenService = () => {
+const HomeScreenService = ({navigation}) => {
   const dispatch = useDispatch();
   const SinOutBtn = async () => {
     dispatch(GeneralAction.setIsAppLoading(true));
@@ -45,7 +45,10 @@ const HomeScreenService = () => {
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       {/* Header  */}
       <View style={styles.header}>
-        <CircleBtn onPress={() => {}}>
+        <CircleBtn
+          onPress={() => {
+            navigation.navigate('Profile');
+          }}>
           <SVG.Profile />
         </CircleBtn>
         <View style={styles.Logo}>
