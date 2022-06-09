@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthNavigator from './AuthNavigation';
 import MainService from './MainService';
@@ -9,7 +9,6 @@ import {useSelector} from 'react-redux';
 const Stack = createNativeStackNavigator();
 export default () => {
   const {user} = useSelector(state => state.Auth);
-  // useEffect(() => {});
 
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>

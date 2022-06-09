@@ -8,15 +8,18 @@ import auth from '@react-native-firebase/auth';
 import {SplashScreen, Welcome, NotConnectedScreen} from '../Screens/Other';
 import AppNavigator from './AppNavigation';
 import GeneralAction from '../Store/Actions/GeneralAction';
-import GeneralStorage from '../Store/Storage/GeneralStorage';
 import UserAction from '../Store/Actions/UserAction';
 
 function Navigation() {
+  // States
   const [isConnected, setIsConnected] = useState();
-  const {UID} = useSelector(state => state.Auth);
   const [user, setUser] = useState({});
+
+  // Fetsh Data From Reducer
   const {isAppLoading, isFirstTimeUse} = useSelector(state => state.Auth);
   const dispatch = useDispatch();
+
+  // On App Load
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
@@ -41,6 +44,8 @@ function Navigation() {
       dispatch(GeneralAction.appStart());
     }, 3000);
   }, []);
+
+  // If User Exist
   useEffect(() => {
     dispatch(
       UserAction.adduser({

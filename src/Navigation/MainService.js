@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import auth from '@react-native-firebase/auth';
 import {useDispatch, useSelector} from 'react-redux';

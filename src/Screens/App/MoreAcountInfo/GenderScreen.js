@@ -37,7 +37,7 @@ const GenderScreen = ({navigation}) => {
   const dispatch = useDispatch();
 
   return (
-    <ScreensTheme Title={'Gender'} goBack={false}>
+    <ScreensTheme Title={'Gender'} goBack={true}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>

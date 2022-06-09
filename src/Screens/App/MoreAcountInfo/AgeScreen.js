@@ -24,7 +24,7 @@ const AgeScreen = ({navigation}) => {
   const [age, setAge] = useState(user.age);
 
   return (
-    <ScreensTheme Title={'Age'} goBack={false}>
+    <ScreensTheme Title={'Age'} goBack={true}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>

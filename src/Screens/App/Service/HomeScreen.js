@@ -9,6 +9,7 @@ import {
 import React from 'react';
 import auth from '@react-native-firebase/auth';
 import {useDispatch, useSelector} from 'react-redux';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
@@ -44,12 +45,16 @@ const HomeScreenService = () => {
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       {/* Header  */}
       <View style={styles.header}>
-        <CircleBtn onPress={SinOutBtn}>
+        <CircleBtn onPress={() => {}}>
           <SVG.Profile />
         </CircleBtn>
         <View style={styles.Logo}>
           <SVG.LogoBlue />
         </View>
+
+        <CircleBtn onPress={SinOutBtn}>
+          <SVG.Logout />
+        </CircleBtn>
       </View>
       {/* Illustratur */}
       <Image
@@ -60,7 +65,17 @@ const HomeScreenService = () => {
       {/* Your Location Google AutoComplete  */}
       <View style={styles.Body}>
         <Text style={styles.LocationText}>Your Location</Text>
-        <TextInput style={styles.AutoComplete} />
+        <GooglePlacesAutocomplete
+          placeholder="Search"
+          onPress={(data, details = null) => {
+            // 'details' is provided when fetchDetails = true
+            console.log(data, details);
+          }}
+          query={{
+            key: 'AIzaSyDfvBX54nrjwGVBaZ116ONkcZBy8wJApws',
+            language: 'en',
+          }}
+        />
       </View>
     </GestureHandlerRootView>
   );
@@ -73,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  header: {flexDirection: 'row', padding: 20},
+  header: {flexDirection: 'row', padding: 20, justifyContent: 'space-between'},
   Logo: {
     marginLeft: 20,
   },
