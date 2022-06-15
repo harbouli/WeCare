@@ -49,11 +49,11 @@ function Navigation() {
   useEffect(() => {
     dispatch(
       UserAction.adduser({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        gender: user.gender,
-        age: user.age,
-        complete: user.confirm,
+        firstname: user?.firstname,
+        lastname: user?.lastname,
+        gender: user?.gender,
+        age: user?.age,
+        complete: user?.confirm,
       }),
     );
   }, [user]);

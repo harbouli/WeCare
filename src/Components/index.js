@@ -7,6 +7,7 @@ import NextBtn from './NextBtn';
 import ScreensTheme from './ScreensTheme';
 import Separator from './Separator';
 import WelcomCard from './WelcomCard';
+import ChoserWithIcone from './ChoserWithIcone';
 export {
   RadiosButton,
   BoxsLogin,
@@ -16,4 +17,5 @@ export {
   ScreensTheme,
   Separator,
   WelcomCard,
+  ChoserWithIcone,
 };

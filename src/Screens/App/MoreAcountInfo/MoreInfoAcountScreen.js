@@ -52,11 +52,11 @@ const MoreInfoAcountScreen = ({navigation}) => {
 
     dispatch(
       UserAction.adduser({
-        firstname: userInfo.firstname,
-        lastname: userInfo.lastname,
-        gender: userInfo.gender,
-        age: userInfo.age,
-        complete: userInfo.confirm,
+        firstname: userInfo?.firstname,
+        lastname: userInfo?.lastname,
+        gender: userInfo?.gender,
+        age: userInfo?.age,
+        complete: userInfo?.confirm,
       }),
     );
   }, [userInfo]);

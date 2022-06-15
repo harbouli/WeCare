@@ -13,7 +13,12 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
-import {CircleBtn} from '../../../Components/';
+import {
+  ChoserWithIcone,
+  CircleBtn,
+  NextBtn,
+  Separator,
+} from '../../../Components/';
 import GeneralStorage from '../../../Store/Storage/GeneralStorage';
 import GeneralAction from '../../../Store/Actions/GeneralAction';
 import UserAction from '../../../Store/Actions/UserAction';
@@ -68,7 +73,7 @@ const HomeScreenService = ({navigation}) => {
       {/* Your Location Google AutoComplete  */}
       <View style={styles.Body}>
         <Text style={styles.LocationText}>Your Location</Text>
-        <GooglePlacesAutocomplete
+        {/* <GooglePlacesAutocomplete
           placeholder="Search"
           onPress={(data, details = null) => {
             // 'details' is provided when fetchDetails = true
@@ -78,7 +83,12 @@ const HomeScreenService = ({navigation}) => {
             key: 'AIzaSyDfvBX54nrjwGVBaZ116ONkcZBy8wJApws',
             language: 'en',
           }}
-        />
+        /> */}
+        <Separator height={30} />
+        <ChoserWithIcone title="Choose a saved place" Svg={<SVG.Home />} />
+        <ChoserWithIcone title="Choose a saved place" Svg={<SVG.Job />} />
+
+        <NextBtn onPress={() => navigation.navigate('Profile')}>Next</NextBtn>
       </View>
     </GestureHandlerRootView>
   );
@@ -110,5 +120,8 @@ const styles = StyleSheet.create({
     height: setHeight(90),
     alignSelf: 'center',
     paddingTop: 10,
+  },
+  autoComplete: {
+    color: Colors.Dark_Gray,
   },
 });

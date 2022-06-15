@@ -49,6 +49,7 @@ export default () => {
         <>
           <Stack.Screen name="Home" component={HomeScreenService} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
+          {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
         </>
       ) : isAnonymous == false ? (
         <>

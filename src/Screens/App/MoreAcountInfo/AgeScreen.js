@@ -15,7 +15,7 @@ import {ScreensTheme, NextBtn, Separator} from '../../../Components';
 import {useDispatch, useSelector} from 'react-redux';
 import UserAction from '../../../Store/Actions/UserAction';
 
-const {setWidth, setHeight} = Displayer;
+const {setWidth} = Displayer;
 
 const AgeScreen = ({navigation}) => {
   const {user} = useSelector(state => state.User);

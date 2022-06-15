@@ -14,9 +14,13 @@ import Shape from '../../assets/SVG/Shape';
 import X from '../../assets/SVG/X';
 import Email from '../../assets/SVG/Email';
 import Phonee from '../../assets/SVG/Phonee';
+import Home from '../../assets/SVG/Home';
+import ToRight from '../../assets/SVG/ToRight';
+import Job from '../../assets/SVG/Job';
 export default {
   Logo,
   Phone,
+  Job,
   Facebook,
   Phonee,
   Google,
@@ -31,4 +35,6 @@ export default {
   Shape,
   X,
   Email,
+  Home,
+  ToRight,
 };
