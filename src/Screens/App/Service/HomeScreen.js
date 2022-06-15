@@ -88,7 +88,7 @@ const HomeScreenService = ({navigation}) => {
         <ChoserWithIcone title="Choose a saved place" Svg={<SVG.Home />} />
         <ChoserWithIcone title="Choose a saved place" Svg={<SVG.Job />} />
 
-        <NextBtn onPress={() => navigation.navigate('Profile')}>Next</NextBtn>
+        <NextBtn onPress={() => navigation.navigate('TimePiker')}>Next</NextBtn>
       </View>
     </GestureHandlerRootView>
   );

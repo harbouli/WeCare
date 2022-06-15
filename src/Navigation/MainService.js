@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import auth from '@react-native-firebase/auth';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {HomeScreenService} from '../Screens/App/Service';
+import {HomeScreenService, TimePikerScreen} from '../Screens/App/Service';
 import {SplashScreen} from '../Screens/Other';
 import {
   MoreInfoAcountScreen,
@@ -49,7 +49,7 @@ export default () => {
         <>
           <Stack.Screen name="Home" component={HomeScreenService} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
-          {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
+          <Stack.Screen name="TimePiker" component={TimePikerScreen} />
         </>
       ) : isAnonymous == false ? (
         <>
