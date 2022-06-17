@@ -17,7 +17,9 @@ import Phonee from '../../assets/SVG/Phonee';
 import Home from '../../assets/SVG/Home';
 import ToRight from '../../assets/SVG/ToRight';
 import Job from '../../assets/SVG/Job';
+import Image from '../../assets/SVG/Image';
 export default {
+  Image,
   Logo,
   Phone,
   Job,

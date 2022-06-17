@@ -1,3 +1,4 @@
 import HomeScreenService from './HomeScreen';
 import TimePikerScreen from './TimePiker';
-export {HomeScreenService, TimePikerScreen};
+import Information from './Information';
+export {HomeScreenService, TimePikerScreen, Information};

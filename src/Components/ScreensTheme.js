@@ -1,23 +1,34 @@
-import {StyleSheet, Text, View, SafeAreaView, StatusBar} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  StatusBar,
+  Pressable,
+} from 'react-native';
 import React from 'react';
 import {Colors, Fonts, SVG} from '../Constants';
 import {Displayer} from '../Utils';
+import {useNavigation} from '@react-navigation/native';
 
 const {setHeight, setWidth} = Displayer;
 
 const ScreensThem = ({children, goBack, Title}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.Screen}>
       <StatusBar backgroundColor={Colors.Blue} barStyle="light-content" />
       <SafeAreaView>
-        <View
-          style={[
-            styles.Header,
-            {justifyContent: !goBack ? 'center' : 'space-between'},
-          ]}>
-          {goBack && <SVG.ArrowBlack />}
-          <Text style={[styles.Title]}>{Title}</Text>
-        </View>
+        <Pressable onPress={() => navigation.goBack()}>
+          <View
+            style={[
+              styles.Header,
+              {justifyContent: !goBack ? 'center' : 'space-between'},
+            ]}>
+            {goBack && <SVG.ArrowBlack />}
+            <Text style={[styles.Title]}>{Title}</Text>
+          </View>
+        </Pressable>
         <View style={styles.Body}>{children}</View>
       </SafeAreaView>
     </View>

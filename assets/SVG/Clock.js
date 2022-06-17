@@ -4,8 +4,8 @@ import Svg, {G, Circle, Path} from 'react-native-svg';
 const SvgComponent = () => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
-    width={23.339}
-    height={23.515}
+    width={80}
+    height={80}
     viewBox="0 0 23.339 23.515">
     <G transform="translate(-.744 -.927)">
       <Circle
